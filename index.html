@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Shree Shivkrupa Enterprises — Wholesale Catalog</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -42,91 +42,103 @@
   a{color:inherit;}
 
   /* ===== Header ===== */
+  #headerSpacer{ width:100%; }
   header.site{
-    position:sticky; top:0; z-index:50;
+    position:fixed; top:0; left:0; right:0; z-index:100;
     background:var(--ink);
     color:var(--paper);
     border-bottom:3px solid var(--orange);
+    padding-top:env(safe-area-inset-top);
+    transition:transform .28s ease;
+    will-change:transform;
   }
+  header.site.hide-header{ transform:translateY(-100%); }
   .header-inner{
     max-width:1280px; margin:0 auto;
     display:flex; align-items:center; justify-content:space-between;
-    padding:16px 24px; gap:20px; flex-wrap:wrap;
+    padding:14px 18px; gap:16px; flex-wrap:wrap;
   }
   .wordmark{
     font-family:'Archivo Black', sans-serif;
-    font-size:26px; letter-spacing:.01em; line-height:1;
-    display:flex; align-items:center; gap:12px;
+    font-size:19px; letter-spacing:.005em; line-height:1.15;
+    display:flex; align-items:center; gap:10px;
   }
   .wordmark .mark{
-    width:34px; height:34px; background:var(--orange);
+    width:30px; height:30px; background:var(--orange);
     display:flex; align-items:center; justify-content:center;
     flex-shrink:0;
     clip-path: polygon(0 0, 100% 0, 100% 70%, 70% 100%, 0 100%);
   }
-  .wordmark .mark svg{width:20px;height:20px;stroke:var(--ink);}
+  .wordmark .mark svg{width:17px;height:17px;stroke:var(--ink);}
   .tagline{
     font-family:'Barlow Condensed', sans-serif;
-    font-size:13px; letter-spacing:.1em; text-transform:uppercase;
+    font-size:11.5px; letter-spacing:.08em; text-transform:uppercase;
     color:#c9d4d3; margin-top:2px;
   }
   .header-meta{
-    display:flex; align-items:center; gap:22px; font-size:13px;
+    display:flex; align-items:center; gap:10px; font-size:13px;
     color:#c9d4d3; flex-wrap:wrap;
   }
   .header-meta .badge{
     border:1px solid #445; padding:6px 10px;
     font-family:'IBM Plex Mono', monospace; font-size:11.5px;
-    color:#e4e0d2; letter-spacing:.03em;
+    color:#e4e0d2; letter-spacing:.03em; white-space:nowrap;
   }
-  .quote-btn{
-    background:var(--orange); color:var(--ink); border:none;
-    font-family:'Barlow Condensed', sans-serif; font-weight:700;
-    text-transform:uppercase; letter-spacing:.06em; font-size:15px;
-    padding:10px 18px; cursor:pointer; display:flex; align-items:center; gap:8px;
-    transition:filter .15s ease;
+  .contact-row{
+    max-width:1280px; margin:0 auto;
+    display:flex; align-items:center; gap:0;
+    border-top:1px solid #33403e;
+    font-family:'IBM Plex Mono', monospace; font-size:11.5px;
   }
-  .quote-btn:hover{filter:brightness(1.08);}
-  .quote-count{
-    background:var(--ink); color:var(--orange);
-    font-family:'IBM Plex Mono',monospace; font-size:12px;
-    border-radius:50%; width:20px; height:20px;
-    display:flex; align-items:center; justify-content:center;
+  .contact-link{
+    display:flex; align-items:center; gap:6px;
+    padding:9px 14px; color:#dcd6c5; text-decoration:none;
+    flex:1; min-width:0;
+    border-right:1px solid #33403e;
   }
+  .contact-link:last-child{ border-right:none; flex:0 0 auto; }
+  .contact-link svg{ width:14px; height:14px; stroke:var(--orange); flex-shrink:0; }
+  .contact-link span{ overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .contact-link.call{ color:var(--orange); flex:0 0 auto; font-weight:600; }
 
   /* ===== Hero strip ===== */
   .hero{
-    max-width:1280px; margin:0 auto; padding:38px 24px 18px;
+    max-width:1280px; margin:0 auto; padding:24px 18px 14px;
     display:flex; justify-content:space-between; align-items:flex-end; gap:24px; flex-wrap:wrap;
   }
   .hero h1{
     font-family:'Archivo Black', sans-serif;
-    font-size:clamp(26px, 4vw, 42px);
-    line-height:1.03; margin:0; max-width:640px;
+    font-size:clamp(22px, 6vw, 42px);
+    line-height:1.05; margin:0; max-width:640px;
   }
   .hero h1 span{color:var(--steel);}
   .hero p{
-    max-width:440px; margin:14px 0 0; color:var(--ink-soft); font-size:15px; line-height:1.5;
+    max-width:440px; margin:12px 0 0; color:var(--ink-soft); font-size:14px; line-height:1.5;
   }
   .hero-manifest{
-    font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--ink-soft);
+    font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:var(--ink-soft);
     border-left:2px solid var(--orange); padding-left:14px; line-height:1.7; white-space:nowrap;
   }
 
   /* ===== Category tabs ===== */
-  .tabs-wrap{ max-width:1280px; margin:22px auto 0; padding:0 24px; }
-  .tabs{ display:flex; gap:2px; flex-wrap:wrap; }
+  .tabs-wrap{ max-width:1280px; margin:18px auto 0; padding:0 18px; }
+  .tabs{
+    display:flex; gap:2px; flex-wrap:nowrap;
+    overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none;
+  }
+  .tabs::-webkit-scrollbar{ display:none; }
   .tab{
-    position:relative;
+    position:relative; flex:0 0 auto;
     font-family:'Barlow Condensed', sans-serif;
-    font-weight:600; text-transform:uppercase; letter-spacing:.06em;
-    font-size:14.5px;
+    font-weight:600; text-transform:uppercase; letter-spacing:.05em;
+    font-size:14px;
     background:var(--card);
     border:1px solid var(--line);
     border-bottom:none;
-    padding:12px 18px 14px;
+    padding:12px 16px 13px;
     cursor:pointer;
     color:var(--ink-soft);
+    white-space:nowrap;
     clip-path: polygon(0 0, 100% 0, 100% 100%, 8px 100%, 0 calc(100% - 8px));
   }
   .tab .idx{
@@ -138,24 +150,24 @@
   .tab-bar-line{ border-bottom:1px solid var(--ink); margin-top:0; }
 
   .toolbar{
-    max-width:1280px; margin:0 auto; padding:16px 24px 0;
+    max-width:1280px; margin:0 auto; padding:14px 18px 0;
     display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap;
   }
   .search-box{
     display:flex; align-items:center; gap:8px;
     border:1px solid var(--line); background:var(--card);
-    padding:9px 12px; min-width:260px;
+    padding:10px 12px; min-width:0; flex:1;
   }
   .search-box input{
     border:none; outline:none; background:transparent;
     font-family:'IBM Plex Mono', monospace; font-size:13px; width:100%; color:var(--ink);
   }
   .search-box svg{width:15px;height:15px;stroke:var(--ink-soft); flex-shrink:0;}
-  .result-count{ font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--ink-soft); }
+  .result-count{ font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--ink-soft); flex-shrink:0; }
 
   /* ===== Grid ===== */
-  main{max-width:1280px; margin:0 auto; padding:22px 24px 90px;}
-  .grid{ display:grid; grid-template-columns:repeat(auto-fill, minmax(232px, 1fr)); gap:20px; }
+  main{max-width:1280px; margin:0 auto; padding:18px 18px 60px;}
+  .grid{ display:grid; grid-template-columns:repeat(auto-fill, minmax(150px, 1fr)); gap:14px; }
   .card{
     background:var(--card); border:1px solid var(--line);
     display:flex; flex-direction:column; position:relative;
@@ -213,104 +225,60 @@
   }
   select.size-select:focus, input:focus{ outline:2px solid var(--steel); outline-offset:1px; }
 
-  .qty-row{ display:flex; align-items:center; gap:10px; }
-  .stepper{ display:flex; align-items:center; border:1px solid var(--line); }
-  .stepper button{
-    width:30px; height:32px; border:none; background:var(--card); cursor:pointer;
-    font-size:16px; color:var(--ink); font-family:'IBM Plex Mono', monospace;
-  }
-  .stepper button:hover{ background:var(--line-soft); }
-  .stepper input{
-    width:40px; text-align:center; border:none; border-left:1px solid var(--line);
-    border-right:1px solid var(--line); font-family:'IBM Plex Mono', monospace; font-size:13px;
-    height:32px;
-  }
-  .qty-unit{ font-size:11px; color:var(--ink-soft); font-family:'IBM Plex Mono', monospace;}
-
-  .add-btn{
-    margin-top:4px; width:100%; padding:10px; background:var(--ink); color:var(--paper);
-    border:none; font-family:'Barlow Condensed', sans-serif; font-weight:700; letter-spacing:.06em;
-    text-transform:uppercase; font-size:14.5px; cursor:pointer; transition:background .15s ease;
-  }
-  .add-btn:hover{ background:var(--steel-dark); }
-  .add-btn.added{ background:var(--orange); color:var(--ink); }
-
   .empty-state{
     grid-column:1/-1; text-align:center; padding:60px 20px; color:var(--ink-soft);
     font-family:'Barlow Condensed', sans-serif; font-size:20px; text-transform:uppercase; letter-spacing:.05em;
   }
 
-  /* ===== Quote drawer ===== */
-  .overlay{
-    position:fixed; inset:0; background:rgba(20,22,20,.45); z-index:90;
-    opacity:0; pointer-events:none; transition:opacity .2s ease;
-  }
-  .overlay.open{ opacity:1; pointer-events:auto; }
-  .drawer{
-    position:fixed; top:0; right:0; height:100%; width:min(400px, 92vw);
-    background:var(--paper); z-index:95; border-left:3px solid var(--orange);
-    transform:translateX(100%); transition:transform .25s ease;
-    display:flex; flex-direction:column;
-  }
-  .drawer.open{ transform:translateX(0); }
-  .drawer-head{
-    background:var(--ink); color:var(--paper); padding:18px 20px;
-    display:flex; align-items:center; justify-content:space-between;
-  }
-  .drawer-head h2{ font-family:'Archivo Black', sans-serif; font-size:19px; margin:0;}
-  .drawer-head button{ background:none; border:none; color:var(--paper); font-size:22px; cursor:pointer; line-height:1; }
-  .drawer-list{ flex:1; overflow-y:auto; padding:14px 18px; display:flex; flex-direction:column; gap:10px;}
-  .drawer-item{
-    background:var(--card); border:1px solid var(--line); padding:10px 12px;
-    display:flex; justify-content:space-between; gap:10px; align-items:flex-start;
-  }
-  .drawer-item .di-name{ font-weight:600; font-size:14px; }
-  .drawer-item .di-meta{ font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:var(--ink-soft); margin-top:3px;}
-  .drawer-item button{ background:none; border:none; color:var(--orange); font-size:13px; cursor:pointer; font-family:'IBM Plex Mono', monospace; }
-  .drawer-empty{ padding:40px 20px; text-align:center; color:var(--ink-soft); font-size:14px;}
-  .drawer-foot{ padding:18px 20px; border-top:1px solid var(--line); display:flex; flex-direction:column; gap:10px;}
-  .drawer-foot .total-line{ display:flex; justify-content:space-between; font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--ink-soft);}
-  .submit-quote{
-    background:var(--orange); border:none; padding:13px; font-family:'Barlow Condensed', sans-serif;
-    font-weight:700; letter-spacing:.06em; text-transform:uppercase; font-size:15px; cursor:pointer;
-  }
-  .clear-quote{ background:none; border:1px solid var(--line); padding:9px; font-family:'Barlow Condensed', sans-serif; text-transform:uppercase; letter-spacing:.05em; cursor:pointer; font-size:13px; color:var(--ink-soft);}
-
   footer{
-    background:var(--ink); color:#c9d4d3; padding:26px 24px; text-align:center;
-    font-family:'IBM Plex Mono', monospace; font-size:11.5px; letter-spacing:.02em;
+    background:var(--ink); color:#c9d4d3; padding:22px 18px calc(22px + env(safe-area-inset-bottom)); text-align:center;
+    font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.02em; line-height:1.6;
   }
 
   @media (max-width:640px){
-    .header-inner{flex-direction:column; align-items:flex-start;}
     .hero{flex-direction:column; align-items:flex-start;}
+    .hero-manifest{ border-left:none; border-top:2px solid var(--orange); padding-left:0; padding-top:8px; white-space:normal; }
+    .card-body{ padding:11px 12px 13px; gap:6px; }
+    .item-name{ font-size:15.5px; }
+    .item-note{ font-size:10px; }
+  }
+  @media (max-width:400px){
+    .grid{ grid-template-columns:repeat(2, 1fr); }
   }
 </style>
 </head>
 <body>
 
-<header class="site">
+<header class="site" id="siteHeader">
   <div class="header-inner">
     <div>
       <div class="wordmark">
         <span class="mark"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 7v10l9 4 9-4V7"/></svg></span>
-        Shree Shivkrupa Enterprises.
+        SHREE SHIVKRUPA ENTERPRISES
       </div>
-      <div class="tagline">General Wholesale — Stationery · Housekeeping · Party · Disposables · Packing</div>
+      <div class="tagline">Office Supplies · Housekeeping · Party · Disposables · Packing</div>
     </div>
     <div class="header-meta">
       <span class="badge" id="skuBadge">191 SKUS</span>
-      <button class="quote-btn" id="openDrawerBtn">
-        Quote List <span class="quote-count" id="quoteCount">0</span>
-      </button>
     </div>
   </div>
+  <div class="contact-row">
+    <a class="contact-link" href="https://www.google.com/maps/place/Shree+shivkrupa+enterprises/@18.5007143,73.9319295,16.75z/data=!4m6!3m5!1s0x3bc2c16fdb41ade7:0x14929be7fe709ed0!8m2!3d18.5004475!4d73.9346821!16s%2Fg%2F11ndcrfjb9" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 21s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
+      <span>Mantri Market, E-164, near Union Bank, Hadapsar Gaon, Hadapsar, Pune 411028</span>
+    </a>
+    <a class="contact-link call" href="tel:+917588699023">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.4 2.1L8.1 9.7a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.7 2z"/></svg>
+      <span>+91 75886 99023</span>
+    </a>
+  </div>
 </header>
+<div id="headerSpacer"></div>
 
 <section class="hero">
   <div>
     <h1>Case goods, <span>catalogued</span><br>like a warehouse floor.</h1>
-    <p>Browse every category by the case — pick a type or size, set your quantity, and build a quote. No account required to browse.</p>
+    <p>Browse every category by the case — pick a type or size to see what's available. No account required to browse.</p>
   </div>
   <div class="hero-manifest">
     CATALOG REV. 2026.07<br>
@@ -322,7 +290,7 @@
 <div class="tabs-wrap">
   <div class="tabs" id="tabs">
     <button class="tab active" data-cat="all"><span class="idx">00</span>All</button>
-    <button class="tab" data-cat="stationery" style="--dot:var(--c-stationery)"><span class="idx">01</span>Stationery</button>
+    <button class="tab" data-cat="stationery" style="--dot:var(--c-stationery)"><span class="idx">01</span>Office Supplies</button>
     <button class="tab" data-cat="housekeeping" style="--dot:var(--c-housekeeping)"><span class="idx">02</span>Housekeeping</button>
     <button class="tab" data-cat="party" style="--dot:var(--c-party)"><span class="idx">03</span>Party &amp; Balloons</button>
     <button class="tab" data-cat="disposable" style="--dot:var(--c-disposable)"><span class="idx">04</span>Disposable</button>
@@ -344,27 +312,14 @@
 </main>
 
 <footer>
-  Shree Shivkrupa Enterprises.— WHOLESALE DISTRIBUTION — CATALOG BUILT FROM YOUR CURRENT ITEM LIST
+  SHREE SHIVKRUPA ENTERPRISES — WHOLESALE DISTRIBUTION<br>
+  Mantri Market, E-164, near Union Bank, Hadapsar Gaon, Hadapsar, Pune, Maharashtra 411028
 </footer>
-
-<div class="overlay" id="overlay"></div>
-<div class="drawer" id="drawer">
-  <div class="drawer-head">
-    <h2>Quote List</h2>
-    <button id="closeDrawerBtn">&times;</button>
-  </div>
-  <div class="drawer-list" id="drawerList"></div>
-  <div class="drawer-foot">
-    <div class="total-line"><span>LINE ITEMS</span><span id="lineCount">0</span></div>
-    <button class="clear-quote" id="clearQuoteBtn">Clear list</button>
-    <button class="submit-quote" id="submitQuoteBtn">Request Quote →</button>
-  </div>
-</div>
 
 <script>
 /* ---------- category display + colors ---------- */
 const CAT_LABELS = {
-  stationery: 'Stationery',
+  stationery: 'Office Supplies',
   housekeeping: 'Housekeeping',
   party: 'Party & Balloons',
   disposable: 'Disposable',
@@ -486,7 +441,6 @@ document.getElementById('skuBadge').textContent = PRODUCTS.length + ' SKUS';
 /* ---------- state ---------- */
 let activeCat = 'all';
 let searchTerm = '';
-const quote = []; // {name, size, qty}
 
 const grid = document.getElementById('grid');
 const resultCount = document.getElementById('resultCount');
@@ -521,22 +475,10 @@ function render(){
         <div class="item-note">SKU-${p.lot} · ${CAT_LABELS[p.cat]}</div>
 
         ${multiSize ? `
-        <div class="field-label">Select type / size</div>
+        <div class="field-label">Type / size</div>
         <select class="size-select" data-role="size">
           ${p.sizes.map(s=>`<option value="${s}">${s}</option>`).join('')}
-        </select>` : `<input type="hidden" data-role="size" value="Standard">`}
-
-        <div class="field-label">Quantity</div>
-        <div class="qty-row">
-          <div class="stepper">
-            <button type="button" data-role="dec">–</button>
-            <input type="text" data-role="qty" value="1" inputmode="numeric">
-            <button type="button" data-role="inc">+</button>
-          </div>
-          <span class="qty-unit">units / cases</span>
-        </div>
-
-        <button class="add-btn" data-role="add">Add to Quote</button>
+        </select>` : ``}
       </div>
     </div>
   `}).join('');
@@ -557,99 +499,39 @@ document.getElementById('searchInput').addEventListener('input', e=>{
   render();
 });
 
-/* ---------- card interactions ---------- */
-grid.addEventListener('click', e=>{
-  const card = e.target.closest('.card');
-  if(!card) return;
-  const id = card.dataset.id;
-  const product = PRODUCTS.find(p=>p.id===id);
+/* ---------- collapsing header on scroll ---------- */
+const siteHeader = document.getElementById('siteHeader');
+const headerSpacer = document.getElementById('headerSpacer');
 
-  if(e.target.dataset.role === 'inc' || e.target.dataset.role === 'dec'){
-    const qtyInput = card.querySelector('[data-role="qty"]');
-    let val = parseInt(qtyInput.value, 10) || 1;
-    val = e.target.dataset.role === 'inc' ? val + 1 : Math.max(1, val - 1);
-    qtyInput.value = val;
-  }
-
-  if(e.target.dataset.role === 'add'){
-    const sizeEl = card.querySelector('[data-role="size"]');
-    const size = sizeEl ? sizeEl.value : 'Standard';
-    const qty = parseInt(card.querySelector('[data-role="qty"]').value, 10) || 1;
-    quote.push({ name: product.name, size, qty });
-    updateQuoteCount();
-    renderDrawer();
-    e.target.textContent = 'Added ✓';
-    e.target.classList.add('added');
-    setTimeout(()=>{ e.target.textContent = 'Add to Quote'; e.target.classList.remove('added'); }, 1100);
-  }
-});
-
-grid.addEventListener('blur', e=>{
-  if(e.target.dataset && e.target.dataset.role === 'qty'){
-    let v = parseInt(e.target.value, 10);
-    if(!v || v < 1) v = 1;
-    e.target.value = v;
-  }
-}, true);
-
-/* ---------- drawer ---------- */
-const drawer = document.getElementById('drawer');
-const overlay = document.getElementById('overlay');
-const drawerList = document.getElementById('drawerList');
-const quoteCountEl = document.getElementById('quoteCount');
-const lineCountEl = document.getElementById('lineCount');
-
-function updateQuoteCount(){ quoteCountEl.textContent = quote.length; }
-
-function renderDrawer(){
-  lineCountEl.textContent = quote.length;
-  if(quote.length === 0){
-    drawerList.innerHTML = '<div class="drawer-empty">Your quote list is empty. Add items from the catalog.</div>';
-    return;
-  }
-  drawerList.innerHTML = quote.map((item, idx)=>`
-    <div class="drawer-item">
-      <div>
-        <div class="di-name">${item.name}</div>
-        <div class="di-meta">${item.size} · ${item.qty} unit${item.qty>1?'s':''}</div>
-      </div>
-      <button data-idx="${idx}" data-role="remove">Remove</button>
-    </div>
-  `).join('');
+function syncSpacer(){
+  headerSpacer.style.height = siteHeader.offsetHeight + 'px';
 }
+syncSpacer();
+window.addEventListener('resize', syncSpacer);
+window.addEventListener('orientationchange', syncSpacer);
 
-drawerList.addEventListener('click', e=>{
-  if(e.target.dataset.role === 'remove'){
-    quote.splice(parseInt(e.target.dataset.idx,10), 1);
-    updateQuoteCount();
-    renderDrawer();
-  }
-});
-
-document.getElementById('openDrawerBtn').addEventListener('click', ()=>{
-  drawer.classList.add('open'); overlay.classList.add('open');
-});
-document.getElementById('closeDrawerBtn').addEventListener('click', closeDrawer);
-overlay.addEventListener('click', closeDrawer);
-function closeDrawer(){ drawer.classList.remove('open'); overlay.classList.remove('open'); }
-
-document.getElementById('clearQuoteBtn').addEventListener('click', ()=>{
-  quote.length = 0;
-  updateQuoteCount();
-  renderDrawer();
-});
-
-document.getElementById('submitQuoteBtn').addEventListener('click', ()=>{
-  if(quote.length === 0){ alert('Add at least one item to your quote list first.'); return; }
-  const lines = quote.map(i=>`- ${i.name} — ${i.size} — ${i.qty} unit${i.qty>1?'s':''}`).join('%0D%0A');
-  const subject = encodeURIComponent('Wholesale Quote Request — Shree Shivkrupa Enterprises.');
-  const body = `Hi Crossdock Supply,%0D%0A%0D%0APlease send a quote for the following:%0D%0A%0D%0A${lines}%0D%0A%0D%0AThanks,%0D%0A`;
-  window.location.href = `mailto:sales@example.com?subject=${subject}&body=${body}`;
-});
+let lastScrollY = window.scrollY;
+let ticking = false;
+window.addEventListener('scroll', ()=>{
+  if(ticking) return;
+  ticking = true;
+  requestAnimationFrame(()=>{
+    const y = window.scrollY;
+    const headerH = siteHeader.offsetHeight;
+    if(y <= headerH){
+      siteHeader.classList.remove('hide-header');
+    } else if(y > lastScrollY + 4){
+      siteHeader.classList.add('hide-header');
+    } else if(y < lastScrollY - 4){
+      siteHeader.classList.remove('hide-header');
+    }
+    lastScrollY = y;
+    ticking = false;
+  });
+}, { passive:true });
 
 /* ---------- init ---------- */
 render();
-renderDrawer();
 </script>
 </body>
 </html>
