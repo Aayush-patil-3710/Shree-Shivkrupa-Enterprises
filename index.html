@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shree Shivkrupa Enterprises — Wholesale Catalog</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#eeece3;
+    --card:#fbfaf5;
+    --ink:#1b1f1d;
+    --ink-soft:#4c534f;
+    --steel:#31505e;
+    --steel-dark:#20363f;
+    --orange:#df5a2c;
+    --line:#c9c2ac;
+    --line-soft:#ddd7c6;
+
+    --c-stationery:#31505e;
+    --c-housekeeping:#3c7a63;
+    --c-party:#a8355c;
+    --c-disposable:#df5a2c;
+    --c-packing:#77502e;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    background-image:
+      linear-gradient(var(--line-soft) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
+    background-size:34px 34px;
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .mono{font-family:'IBM Plex Mono', monospace;}
+  .cond{font-family:'Barlow Condensed', sans-serif; letter-spacing:.04em;}
+  a{color:inherit;}
+
+  /* ===== Header ===== */
+  header.site{
+    position:sticky; top:0; z-index:50;
+    background:var(--ink);
+    color:var(--paper);
+    border-bottom:3px solid var(--orange);
+  }
+  .header-inner{
+    max-width:1280px; margin:0 auto;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 24px; gap:20px; flex-wrap:wrap;
+  }
+  .wordmark{
+    font-family:'Archivo Black', sans-serif;
+    font-size:26px; letter-spacing:.01em; line-height:1;
+    display:flex; align-items:center; gap:12px;
+  }
+  .wordmark .mark{
+    width:34px; height:34px; background:var(--orange);
+    display:flex; align-items:center; justify-content:center;
+    flex-shrink:0;
+    clip-path: polygon(0 0, 100% 0, 100% 70%, 70% 100%, 0 100%);
+  }
+  .wordmark .mark svg{width:20px;height:20px;stroke:var(--ink);}
+  .tagline{
+    font-family:'Barlow Condensed', sans-serif;
+    font-size:13px; letter-spacing:.1em; text-transform:uppercase;
+    color:#c9d4d3; margin-top:2px;
+  }
+  .header-meta{
+    display:flex; align-items:center; gap:22px; font-size:13px;
+    color:#c9d4d3; flex-wrap:wrap;
+  }
+  .header-meta .badge{
+    border:1px solid #445; padding:6px 10px;
+    font-family:'IBM Plex Mono', monospace; font-size:11.5px;
+    color:#e4e0d2; letter-spacing:.03em;
+  }
+  .quote-btn{
+    background:var(--orange); color:var(--ink); border:none;
+    font-family:'Barlow Condensed', sans-serif; font-weight:700;
+    text-transform:uppercase; letter-spacing:.06em; font-size:15px;
+    padding:10px 18px; cursor:pointer; display:flex; align-items:center; gap:8px;
+    transition:filter .15s ease;
+  }
+  .quote-btn:hover{filter:brightness(1.08);}
+  .quote-count{
+    background:var(--ink); color:var(--orange);
+    font-family:'IBM Plex Mono',monospace; font-size:12px;
+    border-radius:50%; width:20px; height:20px;
+    display:flex; align-items:center; justify-content:center;
+  }
+
+  /* ===== Hero strip ===== */
+  .hero{
+    max-width:1280px; margin:0 auto; padding:38px 24px 18px;
+    display:flex; justify-content:space-between; align-items:flex-end; gap:24px; flex-wrap:wrap;
+  }
+  .hero h1{
+    font-family:'Archivo Black', sans-serif;
+    font-size:clamp(26px, 4vw, 42px);
+    line-height:1.03; margin:0; max-width:640px;
+  }
+  .hero h1 span{color:var(--steel);}
+  .hero p{
+    max-width:440px; margin:14px 0 0; color:var(--ink-soft); font-size:15px; line-height:1.5;
+  }
+  .hero-manifest{
+    font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--ink-soft);
+    border-left:2px solid var(--orange); padding-left:14px; line-height:1.7; white-space:nowrap;
+  }
+
+  /* ===== Category tabs ===== */
+  .tabs-wrap{ max-width:1280px; margin:22px auto 0; padding:0 24px; }
+  .tabs{ display:flex; gap:2px; flex-wrap:wrap; }
+  .tab{
+    position:relative;
+    font-family:'Barlow Condensed', sans-serif;
+    font-weight:600; text-transform:uppercase; letter-spacing:.06em;
+    font-size:14.5px;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-bottom:none;
+    padding:12px 18px 14px;
+    cursor:pointer;
+    color:var(--ink-soft);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+  }
+  .tab .idx{
+    font-family:'IBM Plex Mono', monospace; font-weight:400; font-size:11px;
+    color:var(--dot, var(--orange)); margin-right:8px;
+  }
+  .tab.active{ background:var(--ink); color:var(--paper); border-color:var(--ink); }
+  .tab:hover:not(.active){color:var(--ink); border-color:var(--ink-soft);}
+  .tab-bar-line{ border-bottom:1px solid var(--ink); margin-top:0; }
+
+  .toolbar{
+    max-width:1280px; margin:0 auto; padding:16px 24px 0;
+    display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap;
+  }
+  .search-box{
+    display:flex; align-items:center; gap:8px;
+    border:1px solid var(--line); background:var(--card);
+    padding:9px 12px; min-width:260px;
+  }
+  .search-box input{
+    border:none; outline:none; background:transparent;
+    font-family:'IBM Plex Mono', monospace; font-size:13px; width:100%; color:var(--ink);
+  }
+  .search-box svg{width:15px;height:15px;stroke:var(--ink-soft); flex-shrink:0;}
+  .result-count{ font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--ink-soft); }
+
+  /* ===== Grid ===== */
+  main{max-width:1280px; margin:0 auto; padding:22px 24px 90px;}
+  .grid{ display:grid; grid-template-columns:repeat(auto-fill, minmax(232px, 1fr)); gap:20px; }
+  .card{
+    background:var(--card); border:1px solid var(--line);
+    display:flex; flex-direction:column; position:relative;
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .card:hover{ box-shadow:5px 5px 0 var(--line-soft); transform:translate(-2px,-2px); }
+
+  .tag-corner{
+    position:absolute; top:0; right:0;
+    background:var(--ink); color:var(--paper);
+    font-family:'IBM Plex Mono', monospace; font-size:10px;
+    padding:3px 8px 3px 10px; letter-spacing:.04em;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+    z-index:2;
+  }
+  .tag-corner b{color:var(--orange); font-weight:600;}
+
+  .cat-flag{
+    position:absolute; top:10px; left:0;
+    font-family:'Barlow Condensed', sans-serif; font-weight:700; font-size:10.5px;
+    text-transform:uppercase; letter-spacing:.07em;
+    padding:3px 10px 3px 8px; color:#fff;
+  }
+
+  .img-tile{
+    aspect-ratio:1/1;
+    background:
+      radial-gradient(circle at 1px 1px, var(--line-soft) 1px, transparent 1.4px) 0 0/14px 14px,
+      #f4f2ea;
+    border-bottom:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+    position:relative; overflow:hidden;
+  }
+  .img-tile svg{ width:48%; height:48%; stroke:var(--steel-dark); fill:none; stroke-width:1.4; }
+  .img-tile::after{
+    content:""; position:absolute; inset:0;
+    background:linear-gradient(135deg, transparent 60%, rgba(0,0,0,.05) 100%);
+  }
+
+  .card-body{ padding:13px 14px 15px; display:flex; flex-direction:column; gap:8px; flex:1;}
+  .item-name{
+    font-family:'Barlow Condensed', sans-serif; font-weight:700; font-size:18px;
+    line-height:1.15; margin:0;
+  }
+  .item-note{ font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--ink-soft); }
+
+  .field-label{
+    font-family:'Barlow Condensed', sans-serif; font-size:12px; letter-spacing:.08em;
+    text-transform:uppercase; color:var(--ink-soft); margin-top:2px; margin-bottom:-4px;
+  }
+  select.size-select{
+    width:100%; padding:9px 10px; font-family:'IBM Plex Mono', monospace; font-size:13px;
+    border:1px solid var(--line); background:var(--card) url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="6"><path d="M0 0l5 6 5-6z" fill="%2331505e"/></svg>') no-repeat right 12px center;
+    appearance:none; -webkit-appearance:none; color:var(--ink); cursor:pointer;
+  }
+  select.size-select:focus, input:focus{ outline:2px solid var(--steel); outline-offset:1px; }
+
+  .qty-row{ display:flex; align-items:center; gap:10px; }
+  .stepper{ display:flex; align-items:center; border:1px solid var(--line); }
+  .stepper button{
+    width:30px; height:32px; border:none; background:var(--card); cursor:pointer;
+    font-size:16px; color:var(--ink); font-family:'IBM Plex Mono', monospace;
+  }
+  .stepper button:hover{ background:var(--line-soft); }
+  .stepper input{
+    width:40px; text-align:center; border:none; border-left:1px solid var(--line);
+    border-right:1px solid var(--line); font-family:'IBM Plex Mono', monospace; font-size:13px;
+    height:32px;
+  }
+  .qty-unit{ font-size:11px; color:var(--ink-soft); font-family:'IBM Plex Mono', monospace;}
+
+  .add-btn{
+    margin-top:4px; width:100%; padding:10px; background:var(--ink); color:var(--paper);
+    border:none; font-family:'Barlow Condensed', sans-serif; font-weight:700; letter-spacing:.06em;
+    text-transform:uppercase; font-size:14.5px; cursor:pointer; transition:background .15s ease;
+  }
+  .add-btn:hover{ background:var(--steel-dark); }
+  .add-btn.added{ background:var(--orange); color:var(--ink); }
+
+  .empty-state{
+    grid-column:1/-1; text-align:center; padding:60px 20px; color:var(--ink-soft);
+    font-family:'Barlow Condensed', sans-serif; font-size:20px; text-transform:uppercase; letter-spacing:.05em;
+  }
+
+  /* ===== Quote drawer ===== */
+  .overlay{
+    position:fixed; inset:0; background:rgba(20,22,20,.45); z-index:90;
+    opacity:0; pointer-events:none; transition:opacity .2s ease;
+  }
+  .overlay.open{ opacity:1; pointer-events:auto; }
+  .drawer{
+    position:fixed; top:0; right:0; height:100%; width:min(400px, 92vw);
+    background:var(--paper); z-index:95; border-left:3px solid var(--orange);
+    transform:translateX(100%); transition:transform .25s ease;
+    display:flex; flex-direction:column;
+  }
+  .drawer.open{ transform:translateX(0); }
+  .drawer-head{
+    background:var(--ink); color:var(--paper); padding:18px 20px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .drawer-head h2{ font-family:'Archivo Black', sans-serif; font-size:19px; margin:0;}
+  .drawer-head button{ background:none; border:none; color:var(--paper); font-size:22px; cursor:pointer; line-height:1; }
+  .drawer-list{ flex:1; overflow-y:auto; padding:14px 18px; display:flex; flex-direction:column; gap:10px;}
+  .drawer-item{
+    background:var(--card); border:1px solid var(--line); padding:10px 12px;
+    display:flex; justify-content:space-between; gap:10px; align-items:flex-start;
+  }
+  .drawer-item .di-name{ font-weight:600; font-size:14px; }
+  .drawer-item .di-meta{ font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:var(--ink-soft); margin-top:3px;}
+  .drawer-item button{ background:none; border:none; color:var(--orange); font-size:13px; cursor:pointer; font-family:'IBM Plex Mono', monospace; }
+  .drawer-empty{ padding:40px 20px; text-align:center; color:var(--ink-soft); font-size:14px;}
+  .drawer-foot{ padding:18px 20px; border-top:1px solid var(--line); display:flex; flex-direction:column; gap:10px;}
+  .drawer-foot .total-line{ display:flex; justify-content:space-between; font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--ink-soft);}
+  .submit-quote{
+    background:var(--orange); border:none; padding:13px; font-family:'Barlow Condensed', sans-serif;
+    font-weight:700; letter-spacing:.06em; text-transform:uppercase; font-size:15px; cursor:pointer;
+  }
+  .clear-quote{ background:none; border:1px solid var(--line); padding:9px; font-family:'Barlow Condensed', sans-serif; text-transform:uppercase; letter-spacing:.05em; cursor:pointer; font-size:13px; color:var(--ink-soft);}
+
+  footer{
+    background:var(--ink); color:#c9d4d3; padding:26px 24px; text-align:center;
+    font-family:'IBM Plex Mono', monospace; font-size:11.5px; letter-spacing:.02em;
+  }
+
+  @media (max-width:640px){
+    .header-inner{flex-direction:column; align-items:flex-start;}
+    .hero{flex-direction:column; align-items:flex-start;}
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="header-inner">
+    <div>
+      <div class="wordmark">
+        <span class="mark"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 7v10l9 4 9-4V7"/></svg></span>
+        Shree Shivkrupa Enterprises.
+      </div>
+      <div class="tagline">General Wholesale — Stationery · Housekeeping · Party · Disposables · Packing</div>
+    </div>
+    <div class="header-meta">
+      <span class="badge" id="skuBadge">191 SKUS</span>
+      <button class="quote-btn" id="openDrawerBtn">
+        Quote List <span class="quote-count" id="quoteCount">0</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div>
+    <h1>Case goods, <span>catalogued</span><br>like a warehouse floor.</h1>
+    <p>Browse every category by the case — pick a type or size, set your quantity, and build a quote. No account required to browse.</p>
+  </div>
+  <div class="hero-manifest">
+    CATALOG REV. 2026.07<br>
+    SKUS LISTED: <span id="skuTotal">--</span><br>
+    PRICING: ON REQUEST
+  </div>
+</section>
+
+<div class="tabs-wrap">
+  <div class="tabs" id="tabs">
+    <button class="tab active" data-cat="all"><span class="idx">00</span>All</button>
+    <button class="tab" data-cat="stationery" style="--dot:var(--c-stationery)"><span class="idx">01</span>Stationery</button>
+    <button class="tab" data-cat="housekeeping" style="--dot:var(--c-housekeeping)"><span class="idx">02</span>Housekeeping</button>
+    <button class="tab" data-cat="party" style="--dot:var(--c-party)"><span class="idx">03</span>Party &amp; Balloons</button>
+    <button class="tab" data-cat="disposable" style="--dot:var(--c-disposable)"><span class="idx">04</span>Disposable</button>
+    <button class="tab" data-cat="packing" style="--dot:var(--c-packing)"><span class="idx">05</span>Packing</button>
+  </div>
+  <div class="tab-bar-line"></div>
+</div>
+
+<div class="toolbar">
+  <div class="search-box">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+    <input type="text" id="searchInput" placeholder="Search item name…">
+  </div>
+  <div class="result-count" id="resultCount"></div>
+</div>
+
+<main>
+  <div class="grid" id="grid"></div>
+</main>
+
+<footer>
+  Shree Shivkrupa Enterprises.— WHOLESALE DISTRIBUTION — CATALOG BUILT FROM YOUR CURRENT ITEM LIST
+</footer>
+
+<div class="overlay" id="overlay"></div>
+<div class="drawer" id="drawer">
+  <div class="drawer-head">
+    <h2>Quote List</h2>
+    <button id="closeDrawerBtn">&times;</button>
+  </div>
+  <div class="drawer-list" id="drawerList"></div>
+  <div class="drawer-foot">
+    <div class="total-line"><span>LINE ITEMS</span><span id="lineCount">0</span></div>
+    <button class="clear-quote" id="clearQuoteBtn">Clear list</button>
+    <button class="submit-quote" id="submitQuoteBtn">Request Quote →</button>
+  </div>
+</div>
+
+<script>
+/* ---------- category display + colors ---------- */
+const CAT_LABELS = {
+  stationery: 'Stationery',
+  housekeeping: 'Housekeeping',
+  party: 'Party & Balloons',
+  disposable: 'Disposable',
+  packing: 'Packing',
+};
+const CAT_COLORS = {
+  stationery: 'var(--c-stationery)',
+  housekeeping: 'var(--c-housekeeping)',
+  party: 'var(--c-party)',
+  disposable: 'var(--c-disposable)',
+  packing: 'var(--c-packing)',
+};
+
+/* ---------- icon set (line-art, 0 0 48 48 viewBox) ---------- */
+const ICONS = {
+  cup: `<svg viewBox="0 0 48 48"><path d="M12 14h24l-3 26a3 3 0 0 1-3 3H18a3 3 0 0 1-3-3l-3-26z"/><path d="M12 14l-1-5h26l-1 5"/><path d="M15 21c6 3 12 3 18 0"/></svg>`,
+  container: `<svg viewBox="0 0 48 48"><rect x="8" y="18" width="32" height="20" rx="1"/><path d="M8 18l4-8h24l4 8"/><path d="M8 25h32"/></svg>`,
+  tray: `<svg viewBox="0 0 48 48"><rect x="6" y="14" width="36" height="20" rx="1"/><rect x="12" y="19" width="24" height="10"/></svg>`,
+  plate: `<svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="17"/><circle cx="24" cy="24" r="9"/></svg>`,
+  bowl: `<svg viewBox="0 0 48 48"><path d="M8 22a16 9 0 0 0 32 0"/><path d="M8 22h32"/><path d="M14 31l1 5a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3l1-5"/></svg>`,
+  cutlery: `<svg viewBox="0 0 48 48"><path d="M14 6v16a4 4 0 0 0 8 0V6"/><path d="M18 22v20"/><path d="M30 6c-3 0-5 4-5 9s2 7 5 7 5-2 5-7-2-9-5-9z"/><path d="M30 22v20"/></svg>`,
+  gloves: `<svg viewBox="0 0 48 48"><path d="M16 22V9a2.5 2.5 0 0 1 5 0v9M21 20V7a2.5 2.5 0 0 1 5 0v13M26 20V9a2.5 2.5 0 0 1 5 0v11M31 22v-6a2.5 2.5 0 0 1 5 0v10c0 8-5 14-12 14s-12-5-12-11v-6c0-2 2-4 4-4"/></svg>`,
+  foil: `<svg viewBox="0 0 48 48"><rect x="6" y="17" width="36" height="14" rx="1"/><path d="M10 17c2-4 2-6 0-8M17 17c2-4 2-6 0-8M24 17c2-4 2-6 0-8M31 17c2-4 2-6 0-8M38 17c2-4 2-6 0-8"/></svg>`,
+  straw: `<svg viewBox="0 0 48 48"><path d="M30 6L14 26"/><path d="M14 26l6 16"/><path d="M9 8l6-4M13 12l6-4M17 16l6-4"/></svg>`,
+  box: `<svg viewBox="0 0 48 48"><path d="M24 6l18 8v20l-18 8-18-8V14z"/><path d="M6 14l18 8 18-8M24 22v20"/></svg>`,
+  wrap: `<svg viewBox="0 0 48 48"><rect x="6" y="10" width="10" height="28" rx="2"/><ellipse cx="11" cy="24" rx="3" ry="14"/><path d="M18 14l22 6M18 34l22-6"/></svg>`,
+  tape: `<svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="16"/><circle cx="24" cy="24" r="6"/></svg>`,
+  dispenser: `<svg viewBox="0 0 48 48"><path d="M6 30a18 12 0 0 1 36 0"/><rect x="4" y="30" width="40" height="8" rx="1"/><circle cx="24" cy="24" r="6"/></svg>`,
+  bag: `<svg viewBox="0 0 48 48"><path d="M10 16h28l-2 26H12z"/><path d="M17 16v-3a7 7 0 0 1 14 0v3"/></svg>`,
+  bottle: `<svg viewBox="0 0 48 48"><path d="M19 6h10v6l3 4v26a2 2 0 0 1-2 2H18a2 2 0 0 1-2-2V16l3-4z"/><path d="M17 22h14"/></svg>`,
+  brush: `<svg viewBox="0 0 48 48"><rect x="20" y="4" width="8" height="16" rx="1"/><path d="M14 20h20l-3 22a2 2 0 0 1-2 2H19a2 2 0 0 1-2-2z"/><path d="M17 26h14M16 32h16"/></svg>`,
+  mop: `<svg viewBox="0 0 48 48"><path d="M24 4v22"/><path d="M12 26h24l3 6-6 4H15l-6-4z"/><path d="M15 36l-2 8M21 36l-1 8M27 36l1 8M33 36l2 8"/></svg>`,
+  broom: `<svg viewBox="0 0 48 48"><path d="M28 4L14 30"/><path d="M10 44l10-16 8 4-6 14z"/><path d="M14 30l4 2M17 25l4 2M20 20l4 2"/></svg>`,
+  spray: `<svg viewBox="0 0 48 48"><rect x="14" y="18" width="14" height="26" rx="2"/><path d="M18 18v-4h6v4"/><path d="M24 10h10l-2 4h-6z"/><path d="M34 12l6-2M34 8l7 1M34 16l6 2"/></svg>`,
+  bucket: `<svg viewBox="0 0 48 48"><path d="M10 16h28l-3 26a2 2 0 0 1-2 2H15a2 2 0 0 1-2-2z"/><path d="M6 16h36"/><path d="M16 16a8 5 0 0 1 16 0"/></svg>`,
+  candle: `<svg viewBox="0 0 48 48"><rect x="19" y="16" width="10" height="26" rx="1"/><path d="M24 16c0-4-3-5-2-9 1 2 4 3 4 7 0 1-1 2-2 2z"/></svg>`,
+  balloon: `<svg viewBox="0 0 48 48"><path d="M24 6a12 14 0 0 1 12 14c0 8-6 14-10 16l2 4h-8l2-4c-4-2-10-8-10-16A12 14 0 0 1 24 6z"/><path d="M22 36l2 4 2-4"/></svg>`,
+  banner: `<svg viewBox="0 0 48 48"><path d="M6 10h36l-8 8 8 8H6z"/><path d="M6 10v34"/></svg>`,
+  ribbon: `<svg viewBox="0 0 48 48"><path d="M24 20a6 6 0 1 0-8 6 6 6 0 1 0 8-6z"/><path d="M24 20a6 6 0 1 1 8 6 6 6 0 1 1-8-6z"/><path d="M24 26v18l-5-4-5 4V30M34 30v14l-5-4-5 4"/></svg>`,
+  scissors: `<svg viewBox="0 0 48 48"><circle cx="12" cy="12" r="5"/><circle cx="12" cy="36" r="5"/><path d="M16 15l26 26M16 33L42 7"/></svg>`,
+  stapler: `<svg viewBox="0 0 48 48"><path d="M6 34h36v6H6z"/><path d="M8 34l6-20h20l6 20"/><path d="M14 14h20"/></svg>`,
+  marker: `<svg viewBox="0 0 48 48"><path d="M30 6l12 12-20 20H10V26z"/><path d="M24 16l8 8"/></svg>`,
+  band: `<svg viewBox="0 0 48 48"><ellipse cx="24" cy="24" rx="16" ry="10"/><ellipse cx="24" cy="24" rx="9" ry="5"/></svg>`,
+  sticker: `<svg viewBox="0 0 48 48"><path d="M8 8h24l8 8v24H8z"/><path d="M32 8v8h8"/></svg>`,
+  twine: `<svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="16"/><path d="M12 16c8 4 8 8 0 12M18 10c10 6 10 22 0 28M30 10c-10 6-10 22 0 28M36 16c-8 4-8 8 0 12"/></svg>`,
+  paperroll: `<svg viewBox="0 0 48 48"><ellipse cx="24" cy="12" rx="14" ry="5"/><path d="M10 12v18c0 3 6 5 14 5s14-2 14-5V12"/><ellipse cx="24" cy="12" rx="5" ry="2"/></svg>`,
+  mailer: `<svg viewBox="0 0 48 48"><rect x="8" y="12" width="32" height="24" rx="1"/><path d="M8 12l16 12 16-12"/></svg>`,
+  peanuts: `<svg viewBox="0 0 48 48"><rect x="8" y="10" width="32" height="30" rx="1"/><circle cx="18" cy="20" r="3"/><circle cx="28" cy="18" r="3"/><circle cx="22" cy="28" r="3"/><circle cx="32" cy="30" r="3"/></svg>`,
+  corner: `<svg viewBox="0 0 48 48"><path d="M10 38V16a6 6 0 0 1 6-6h22"/><path d="M10 38h22a6 6 0 0 0 6-6V16"/></svg>`,
+  lighter: `<svg viewBox="0 0 48 48"><rect x="16" y="16" width="16" height="26" rx="3"/><path d="M20 16v-4h8v4"/><path d="M24 4c0 4-3 5-2 9 1-1 4-2 4-6 0-1-1-2-2-3z"/></svg>`,
+  book: `<svg viewBox="0 0 48 48"><rect x="8" y="8" width="32" height="32" rx="1"/><path d="M14 16h20M14 24h20M14 32h12"/></svg>`,
+};
+
+/* ---------- keyword -> icon (first match wins), plus per-category fallback ---------- */
+const ICON_RULES = [
+  ['dispenser','dispenser'],['cutter','scissors'],['hook','corner'],
+  ['marker','marker'],['q.t. book','book'],['bill book','book'],
+  ['rubber band','band'],['stapler','stapler'],['scissors','scissors'],
+  ['sticker','sticker'],
+  ['phenyl','bottle'],['wash','bottle'],['soap','bottle'],['cleaner','bottle'],
+  ['acid','bottle'],['freshener','bottle'],['sos bottle','bottle'],
+  ['scrub','brush'],['sponge','brush'],['duster','brush'],['brush','brush'],
+  ['mop','mop'],['wiper','mop'],
+  ['broom','broom'],['dust pan','broom'],
+  ['bucket','bucket'],
+  ['spray','spray'],['nozzle','spray'],
+  ['naphthalene','box'],['sani cube','box'],['urinal','box'],['cockroach','box'],
+  ['banner','banner'],['curtain','banner'],
+  ['balloon','balloon'],['foil letter','balloon'],['foil number','balloon'],
+  ['foil kit','balloon'],['confetti','balloon'],['popper','balloon'],
+  ['smoke','balloon'],['spray snow','balloon'],['handi','balloon'],
+  ['candle','candle'],
+  ['ribbon','ribbon'],['gift bow','ribbon'],['sash','ribbon'],['crown','ribbon'],
+  ['cap','ribbon'],['eye mask','ribbon'],
+  ['potali','bag'],
+  ['spoon','cutlery'],['fork','cutlery'],['stirrer','cutlery'],['skewer','cutlery'],
+  ['stick','cutlery'],['toothpick','cutlery'],
+  ['straw','straw'],
+  ['glove','gloves'],
+  ['pizza','box'],['pastry','box'],['burger','box'],['sandwich','box'],['paper box','box'],
+  ['thali','plate'],['plate','plate'],['duplex','plate'],
+  ['dona','bowl'],['bowl','bowl'],
+  ['cup','cup'],['glass','cup'],['lid','cup'],
+  ['tissue','paperroll'],['toilet roll','paperroll'],['kitchen roll','paperroll'],
+  ['fuel','bucket'],
+  ['garbage bag','bag'],['lighter','lighter'],
+  ['sealing machine','dispenser'],
+  ['kirana bag','bag'],['pp bag','bag'],['milk bag','bag'],['khaki','bag'],
+  ['lock','bag'],['carry bag','bag'],['poly bag','bag'],['silver pouch','bag'],
+  ['courier','bag'],['hdpe','bag'],['non-woven','bag'],['d-cut','bag'],['pouch','bag'],
+  ['market bag','bag'],['folding bag','bag'],
+  ['container','container'],['hinge box','container'],['black bucket','bucket'],
+  ['tray','tray'],
+  ['foil','foil'],
+  ['wrap','wrap'],['film','wrap'],['stretch','wrap'],
+  ['roll','paperroll'],['butter paper','paperroll'],
+  ['twine','twine'],['dora','twine'],
+  ['tape','tape'],
+  ['laddu','cup'],
+  ['plastic sheet','paperroll'],
+];
+const CAT_FALLBACK_ICON = {
+  stationery:'dispenser', housekeeping:'bottle', party:'balloon',
+  disposable:'cup', packing:'box',
+};
+function getIcon(name, cat){
+  const n = name.toLowerCase();
+  for(const [kw, icon] of ICON_RULES){ if(n.includes(kw)) return icon; }
+  return CAT_FALLBACK_ICON[cat] || 'box';
+}
+
+/* ---------- catalog data (built from the item list) ---------- */
+const PRODUCTS = [{"id": "p001", "name": "Tape Dispenser", "cat": "stationery", "sizes": ["Table Wala"], "lot": "001"}, {"id": "p002", "name": "Tape Cutter", "cat": "stationery", "sizes": ["Pencil Knife"], "lot": "002"}, {"id": "p003", "name": "Steel Hook", "cat": "stationery", "sizes": ["3 Pcs Pack"], "lot": "003"}, {"id": "p004", "name": "Paper Tape", "cat": "stationery", "sizes": ["1 in"], "lot": "004"}, {"id": "p005", "name": "Marker", "cat": "stationery", "sizes": ["CD Marker", "Permanent"], "lot": "005"}, {"id": "p006", "name": "Q.T. Book", "cat": "stationery", "sizes": ["Standard"], "lot": "006"}, {"id": "p007", "name": "Bill Book", "cat": "stationery", "sizes": ["0 Size"], "lot": "007"}, {"id": "p008", "name": "Double Tape", "cat": "stationery", "sizes": ["1 in"], "lot": "008"}, {"id": "p009", "name": "Rubber Band", "cat": "stationery", "sizes": ["0 Size / 40gm", "1 in / 40gm", "1/2 Kg Pack - 0 Size", "1 in", "1.5 in", "2 in", "3 in"], "lot": "009"}, {"id": "p010", "name": "Stapler", "cat": "stationery", "sizes": ["Standard"], "lot": "010"}, {"id": "p011", "name": "Stapler Pin Box", "cat": "stationery", "sizes": ["Standard"], "lot": "011"}, {"id": "p012", "name": "Scissors", "cat": "stationery", "sizes": ["No. 4", "No. 9"], "lot": "012"}, {"id": "p013", "name": "Plain Stickers", "cat": "stationery", "sizes": ["P-6", "P-8", "P-10", "P-16", "P-21"], "lot": "013"}, {"id": "p014", "name": "Colour Phenyl", "cat": "housekeeping", "sizes": ["1 Ltr", "5 Ltr"], "lot": "014"}, {"id": "p015", "name": "Hand Wash", "cat": "housekeeping", "sizes": ["1/2 Ltr", "5 Ltr"], "lot": "015"}, {"id": "p016", "name": "Liquid Soap", "cat": "housekeeping", "sizes": ["1 Ltr", "5 Ltr"], "lot": "016"}, {"id": "p017", "name": "Toilet Cleaner", "cat": "housekeeping", "sizes": ["1/2 Ltr", "5 Ltr"], "lot": "017"}, {"id": "p018", "name": "Glass Cleaner", "cat": "housekeeping", "sizes": ["1/2 Ltr", "5 Ltr"], "lot": "018"}, {"id": "p019", "name": "Acid", "cat": "housekeeping", "sizes": ["1 Ltr", "5 Ltr"], "lot": "019"}, {"id": "p020", "name": "Sunny Phenyl", "cat": "housekeeping", "sizes": ["500 ml", "1000 ml", "5 Ltr"], "lot": "020"}, {"id": "p021", "name": "Room Freshener", "cat": "housekeeping", "sizes": ["300 ml Can", "5 Ltr"], "lot": "021"}, {"id": "p022", "name": "Steel Scrub", "cat": "housekeeping", "sizes": ["10 gm", "15 gm"], "lot": "022"}, {"id": "p023", "name": "Scrub Pad", "cat": "housekeeping", "sizes": ["2-in-1 Scrub", "Green Pad", "Gala Scrub", "Sponge 12 Pcs Pack"], "lot": "023"}, {"id": "p024", "name": "Mop Refill", "cat": "housekeeping", "sizes": ["6 in / 300gm", "9 in"], "lot": "024"}, {"id": "p025", "name": "Duster", "cat": "housekeeping", "sizes": ["Checks Regular", "Big", "Ladi", "Micro Ultra Soft", "Yellow"], "lot": "025"}, {"id": "p026", "name": "Naphthalene Balls", "cat": "housekeeping", "sizes": ["White / 100gm", "Colour / 100gm"], "lot": "026"}, {"id": "p027", "name": "Sani Cube", "cat": "housekeeping", "sizes": ["100 gm"], "lot": "027"}, {"id": "p028", "name": "Urinal Screen", "cat": "housekeeping", "sizes": ["Standard"], "lot": "028"}, {"id": "p029", "name": "Air Freshener Pocket", "cat": "housekeeping", "sizes": ["Standard"], "lot": "029"}, {"id": "p030", "name": "Soap Dispenser Pump", "cat": "housekeeping", "sizes": ["Standard"], "lot": "030"}, {"id": "p031", "name": "Plastic Broom (Kharata)", "cat": "housekeeping", "sizes": ["Standard"], "lot": "031"}, {"id": "p032", "name": "Hockey Brush", "cat": "housekeeping", "sizes": ["Standard"], "lot": "032"}, {"id": "p033", "name": "Hard Brush", "cat": "housekeeping", "sizes": ["9 in", "11 in"], "lot": "033"}, {"id": "p034", "name": "Soft Brush", "cat": "housekeeping", "sizes": ["9 in", "11 in"], "lot": "034"}, {"id": "p035", "name": "Mesh Broom (Jali Zhadu)", "cat": "housekeeping", "sizes": ["Standard"], "lot": "035"}, {"id": "p036", "name": "Mop (Moof)", "cat": "housekeeping", "sizes": ["6 in", "9 in", "12 in"], "lot": "036"}, {"id": "p037", "name": "Dry Mop", "cat": "housekeeping", "sizes": ["24 in"], "lot": "037"}, {"id": "p038", "name": "Dry Mop Refill", "cat": "housekeeping", "sizes": ["24 in"], "lot": "038"}, {"id": "p039", "name": "Foam Wiper", "cat": "housekeeping", "sizes": ["16 in", "21 in"], "lot": "039"}, {"id": "p040", "name": "Steel Wiper", "cat": "housekeeping", "sizes": ["16 in"], "lot": "040"}, {"id": "p041", "name": "Rubber Wiper (Black)", "cat": "housekeeping", "sizes": ["16 in", "21 in"], "lot": "041"}, {"id": "p042", "name": "Dust Pan", "cat": "housekeeping", "sizes": ["Standard"], "lot": "042"}, {"id": "p043", "name": "Kitchen Wiper", "cat": "housekeeping", "sizes": ["Standard"], "lot": "043"}, {"id": "p044", "name": "Kitchen Sponge", "cat": "housekeeping", "sizes": ["Standard"], "lot": "044"}, {"id": "p045", "name": "Bucket Mop Set", "cat": "housekeeping", "sizes": ["Standard"], "lot": "045"}, {"id": "p046", "name": "Bucket Mop Rod", "cat": "housekeeping", "sizes": ["Standard"], "lot": "046"}, {"id": "p047", "name": "Bucket Mop Refill", "cat": "housekeeping", "sizes": ["Standard"], "lot": "047"}, {"id": "p048", "name": "Twist Mop (Steel)", "cat": "housekeeping", "sizes": ["Standard"], "lot": "048"}, {"id": "p049", "name": "Bottle Brush", "cat": "housekeeping", "sizes": ["Standard"], "lot": "049"}, {"id": "p050", "name": "Feather Brush", "cat": "housekeeping", "sizes": ["Standard"], "lot": "050"}, {"id": "p051", "name": "Spray Nozzle", "cat": "housekeeping", "sizes": ["Standard"], "lot": "051"}, {"id": "p052", "name": "Plastic Broom", "cat": "housekeeping", "sizes": ["Standard"], "lot": "052"}, {"id": "p053", "name": "Grass Broom", "cat": "housekeeping", "sizes": ["Regular", "XL", "Long", "Monkey", "Mayuri", "Kharata"], "lot": "053"}, {"id": "p054", "name": "Cockroach Bait (Black)", "cat": "housekeeping", "sizes": ["Standard"], "lot": "054"}, {"id": "p055", "name": "Happy Birthday Paper Banner", "cat": "party", "sizes": ["Red", "Golden", "Silver", "Black/Blue", "Pink", "Rose Gold"], "lot": "055"}, {"id": "p056", "name": "Karshu Birthday Banner", "cat": "party", "sizes": ["Red", "Golden", "Pink", "Black", "Silver", "Blue", "Rose Gold"], "lot": "056"}, {"id": "p057", "name": "Happy Birthday Foil Banner", "cat": "party", "sizes": ["Standard"], "lot": "057"}, {"id": "p058", "name": "Welcome Banner", "cat": "party", "sizes": ["Paper", "Foil"], "lot": "058"}, {"id": "p059", "name": "Anniversary Banner", "cat": "party", "sizes": ["Paper", "Foil"], "lot": "059"}, {"id": "p060", "name": "5 Pcs Foil Set", "cat": "party", "sizes": ["Standard"], "lot": "060"}, {"id": "p061", "name": "Birthday Combo Set", "cat": "party", "sizes": ["Standard"], "lot": "061"}, {"id": "p062", "name": "Confetti Balloon", "cat": "party", "sizes": ["Golden", "Rose Gold", "Red", "Silver", "Blue"], "lot": "062"}, {"id": "p063", "name": "Heart Shape Foil Balloon", "cat": "party", "sizes": ["Red", "Golden", "Silver", "Blue"], "lot": "063"}, {"id": "p064", "name": "Star Shape Foil Balloon", "cat": "party", "sizes": ["Golden", "Silver", "Red"], "lot": "064"}, {"id": "p065", "name": "Foil Letter Balloon (A-Z)", "cat": "party", "sizes": ["Set of 26 letters"], "lot": "065"}, {"id": "p066", "name": "Foil Number Balloon (0-9)", "cat": "party", "sizes": ["Set of 10 numbers"], "lot": "066"}, {"id": "p067", "name": "3x6 Foil Curtain", "cat": "party", "sizes": ["Golden", "Red", "Pink", "Blue", "Silver"], "lot": "067"}, {"id": "p068", "name": "Gift Bow", "cat": "party", "sizes": ["Standard"], "lot": "068"}, {"id": "p069", "name": "Celebration Sash", "cat": "party", "sizes": ["Birthday Girl", "Mom To Be", "Bride To Be"], "lot": "069"}, {"id": "p070", "name": "Party Cap", "cat": "party", "sizes": ["Plain", "Birthday Print"], "lot": "070"}, {"id": "p071", "name": "Birthday Number Candle (0-9)", "cat": "party", "sizes": ["Set of 10 numbers"], "lot": "071"}, {"id": "p072", "name": "Heart Shape Candle", "cat": "party", "sizes": ["Pink", "Red", "Silver"], "lot": "072"}, {"id": "p073", "name": "Twisted Candle", "cat": "party", "sizes": ["Standard"], "lot": "073"}, {"id": "p074", "name": "Side Candle", "cat": "party", "sizes": ["Standard"], "lot": "074"}, {"id": "p075", "name": "Tea Light Candle", "cat": "party", "sizes": ["Standard"], "lot": "075"}, {"id": "p076", "name": "Sparkle Candle", "cat": "party", "sizes": ["Standard"], "lot": "076"}, {"id": "p077", "name": "Spray Snow", "cat": "party", "sizes": ["Standard"], "lot": "077"}, {"id": "p078", "name": "Ribbon", "cat": "party", "sizes": ["30cm Glitter", "30cm Paper"], "lot": "078"}, {"id": "p079", "name": "Pull-String Party Popper", "cat": "party", "sizes": ["Standard"], "lot": "079"}, {"id": "p080", "name": "Metallic Balloon Bag (1000 pcs)", "cat": "party", "sizes": ["Golden", "Red", "Sky Blue", "Dark Blue", "Purple", "Silver", "Yellow", "Pink"], "lot": "080"}, {"id": "p081", "name": "Metallic Balloon Pack (25 pcs)", "cat": "party", "sizes": ["Silver", "Dark Blue", "Yellow", "Mix", "Pink", "Golden", "Red", "White", "Sky Blue", "Purple"], "lot": "081"}, {"id": "p082", "name": "Heart Shape Balloon", "cat": "party", "sizes": ["Red", "White"], "lot": "082"}, {"id": "p083", "name": "Foil Kit \u2014 Welcome Baby", "cat": "party", "sizes": ["Baby Boy", "Baby Girl"], "lot": "083"}, {"id": "p084", "name": "Baby Shower Set", "cat": "party", "sizes": ["Banner + Set", "Props Set"], "lot": "084"}, {"id": "p085", "name": "Annaprashan Banner", "cat": "party", "sizes": ["Standard"], "lot": "085"}, {"id": "p086", "name": "Cold Fire Gun Refill", "cat": "party", "sizes": ["Standard"], "lot": "086"}, {"id": "p087", "name": "Coloured Smoke", "cat": "party", "sizes": ["Standard"], "lot": "087"}, {"id": "p088", "name": "Handi Balloon", "cat": "party", "sizes": ["Standard"], "lot": "088"}, {"id": "p089", "name": "Silver Crown", "cat": "party", "sizes": ["Standard"], "lot": "089"}, {"id": "p090", "name": "Eye Mask", "cat": "party", "sizes": ["Regular", "Heavy"], "lot": "090"}, {"id": "p091", "name": "Potali Gift Bag", "cat": "party", "sizes": ["2x3", "3x4", "4x5", "5x7", "6x9", "8x10"], "lot": "091"}, {"id": "p092", "name": "Wooden Spoon", "cat": "disposable", "sizes": ["140 mm", "160 mm"], "lot": "092"}, {"id": "p093", "name": "Wooden Fork", "cat": "disposable", "sizes": ["160 mm"], "lot": "093"}, {"id": "p094", "name": "Ice Cream Spoon", "cat": "disposable", "sizes": ["75 mm"], "lot": "094"}, {"id": "p095", "name": "Coffee Stirrer", "cat": "disposable", "sizes": ["110 mm"], "lot": "095"}, {"id": "p096", "name": "Wine Stirrer (Plastic)", "cat": "disposable", "sizes": ["Standard"], "lot": "096"}, {"id": "p097", "name": "Fruit Fork", "cat": "disposable", "sizes": ["75 mm"], "lot": "097"}, {"id": "p098", "name": "Bamboo Skewers", "cat": "disposable", "sizes": ["6 in", "8 in", "10 in", "12 in"], "lot": "098"}, {"id": "p099", "name": "Potato Skewers", "cat": "disposable", "sizes": ["12 in", "14 in"], "lot": "099"}, {"id": "p100", "name": "Ice Cream Stick", "cat": "disposable", "sizes": ["Standard"], "lot": "100"}, {"id": "p101", "name": "Plain Spoon", "cat": "disposable", "sizes": ["Standard"], "lot": "101"}, {"id": "p102", "name": "Medium Spoon", "cat": "disposable", "sizes": ["Standard"], "lot": "102"}, {"id": "p103", "name": "Colourful Spoon", "cat": "disposable", "sizes": ["Standard"], "lot": "103"}, {"id": "p104", "name": "Plastic Fork", "cat": "disposable", "sizes": ["Standard"], "lot": "104"}, {"id": "p105", "name": "Rubber Hand Gloves", "cat": "disposable", "sizes": ["Standard"], "lot": "105"}, {"id": "p106", "name": "Surgical Hand Gloves", "cat": "disposable", "sizes": ["Black", "Blue", "Natural"], "lot": "106"}, {"id": "p107", "name": "Cotton Hand Gloves", "cat": "disposable", "sizes": ["Standard"], "lot": "107"}, {"id": "p108", "name": "Plastic Bend Straw", "cat": "disposable", "sizes": ["Standard"], "lot": "108"}, {"id": "p109", "name": "Coconut Straw", "cat": "disposable", "sizes": ["Standard"], "lot": "109"}, {"id": "p110", "name": "Paper Straw", "cat": "disposable", "sizes": ["6 mm", "8 mm"], "lot": "110"}, {"id": "p111", "name": "Table Roll", "cat": "disposable", "sizes": ["1 Kg Printed", "Golden/Silver"], "lot": "111"}, {"id": "p112", "name": "Plain Paper Box", "cat": "disposable", "sizes": ["3x4x3", "4x4x3", "5x5x3", "5x7x3", "6x6x4", "7x7x4"], "lot": "112"}, {"id": "p113", "name": "Pizza Box", "cat": "disposable", "sizes": ["7x7", "8x8", "10x10 Plain"], "lot": "113"}, {"id": "p114", "name": "Printed Pastry Box", "cat": "disposable", "sizes": ["3x4x3", "4x4x3"], "lot": "114"}, {"id": "p115", "name": "Burger Box", "cat": "disposable", "sizes": ["5x5x3"], "lot": "115"}, {"id": "p116", "name": "Sandwich Box", "cat": "disposable", "sizes": ["5x7x3"], "lot": "116"}, {"id": "p117", "name": "Silver Thali", "cat": "disposable", "sizes": ["Silver 4CP", "Silver Plain"], "lot": "117"}, {"id": "p118", "name": "150 GSM Thali", "cat": "disposable", "sizes": ["Green Plain", "Green 4CP"], "lot": "118"}, {"id": "p119", "name": "Buffet Thali", "cat": "disposable", "sizes": ["4CP", "Plain"], "lot": "119"}, {"id": "p120", "name": "Bagasse Plate", "cat": "disposable", "sizes": ["9 in 3CP", "9 in Round", "10 in 3CP", "10 in Round", "10 in 3CP Square", "11 in 4CP", "11 in Round", "12 in 4CP", "12 in Round"], "lot": "120"}, {"id": "p121", "name": "Silver Plate (100 GSM)", "cat": "disposable", "sizes": ["0 Size", "1 No.", "2 No.", "3 No.", "4 No.", "5 No. Hole"], "lot": "121"}, {"id": "p122", "name": "Colourful Plate", "cat": "disposable", "sizes": ["No. 1", "No. 2"], "lot": "122"}, {"id": "p123", "name": "Duplex Plate", "cat": "disposable", "sizes": ["No. 3", "No. 4"], "lot": "123"}, {"id": "p124", "name": "Silver Dona (Leaf Bowl)", "cat": "disposable", "sizes": ["1 No. / 2.5 in", "2 No. / 4 in", "6 in", "7 in", "8 in"], "lot": "124"}, {"id": "p125", "name": "Paper Bowl", "cat": "disposable", "sizes": ["150 ml", "200 ml", "360 ml", "5x5 Square"], "lot": "125"}, {"id": "p126", "name": "Bagasse Bowl", "cat": "disposable", "sizes": ["180 ml"], "lot": "126"}, {"id": "p127", "name": "Paper Cup (Regular)", "cat": "disposable", "sizes": ["35 ml", "45 ml", "65 ml", "70 ml", "75 ml", "85 ml", "110 ml", "150 ml", "210 ml", "250 ml"], "lot": "127"}, {"id": "p128", "name": "Spectra Cup", "cat": "disposable", "sizes": ["210 ml", "250 ml", "330 ml"], "lot": "128"}, {"id": "p129", "name": "Rippel Cup", "cat": "disposable", "sizes": ["130 ml", "150 ml", "250 ml"], "lot": "129"}, {"id": "p130", "name": "Plastic Glass", "cat": "disposable", "sizes": ["250 ml Crystal", "300 ml Regular", "350 ml (4gm)"], "lot": "130"}, {"id": "p131", "name": "Dome Lid", "cat": "disposable", "sizes": ["80 mm Dia", "95 mm Dia", "80 mm Dia Black Sipper"], "lot": "131"}, {"id": "p132", "name": "Ice Cream Cup", "cat": "disposable", "sizes": ["50 ml", "100 ml"], "lot": "132"}, {"id": "p133", "name": "Tissue Paper", "cat": "disposable", "sizes": ["22x22 Budget", "27x27 Soft", "27x27 Hard", "Pop Up", "M-Fold", "Car Tissue"], "lot": "133"}, {"id": "p134", "name": "Toilet Roll", "cat": "disposable", "sizes": ["400 gm"], "lot": "134"}, {"id": "p135", "name": "Kitchen Roll", "cat": "disposable", "sizes": ["Standard"], "lot": "135"}, {"id": "p136", "name": "Catering Fuel", "cat": "disposable", "sizes": ["150 gm", "200 gm", "8 Kg Can"], "lot": "136"}, {"id": "p137", "name": "Garbage Bag", "cat": "disposable", "sizes": ["19x21 Black", "19x21 Green Roll", "25x30 Green", "27x36 Green", "30 in Green", "29x29 Black Regular", "29x39 Black (51 Mic)"], "lot": "137"}, {"id": "p138", "name": "SOS Bottle", "cat": "disposable", "sizes": ["300 ml White", "300 ml Red", "500 ml Red"], "lot": "138"}, {"id": "p139", "name": "Lighter", "cat": "disposable", "sizes": ["12 in", "14 in"], "lot": "139"}, {"id": "p140", "name": "Sealing Machine", "cat": "packing", "sizes": ["8 in"], "lot": "140"}, {"id": "p141", "name": "LD Kirana Bag (20 Mic)", "cat": "packing", "sizes": ["1/4 Kg", "1/2 Kg", "1 Kg", "2 Kg", "3 Kg", "5 Kg", "10 Kg", "20 Kg"], "lot": "141"}, {"id": "p142", "name": "PP Bag (200 Gauge)", "cat": "packing", "sizes": ["3x3", "3x4", "3.5x3.5", "3x5", "4x4", "4x5", "4x6", "5x5", "5x6", "5x7", "5x8", "6x7", "6x8", "6x9", "7x8", "7x9", "7x10", "7x11", "7x12", "8x10", "8x11", "8x12", "9x11", "9x13", "10x12", "10x14", "10x16", "12x16", "12x18", "14x18", "16x20", "18x22", "22x27", "24x36"], "lot": "142"}, {"id": "p143", "name": "Milk Bag", "cat": "packing", "sizes": ["5x8", "6x10"], "lot": "143"}, {"id": "p144", "name": "Plastic Sheet Roll", "cat": "packing", "sizes": ["22 in"], "lot": "144"}, {"id": "p145", "name": "Silking Bag (30 Mic)", "cat": "packing", "sizes": ["7x12", "8x12", "9x13", "10x14", "12x16", "14x18"], "lot": "145"}, {"id": "p146", "name": "Medical Pouch \u2014 Get Well Soon", "cat": "packing", "sizes": ["3x4", "4x6"], "lot": "146"}, {"id": "p147", "name": "Khaki Bag", "cat": "packing", "sizes": ["1/2 Kg", "1 Kg", "1.5 Kg", "2 Kg", "3 Kg", "5 Kg", "10 Kg"], "lot": "147"}, {"id": "p148", "name": "Khaki Flat Bottom Bag", "cat": "packing", "sizes": ["7.5x11x5", "10x14x5"], "lot": "148"}, {"id": "p149", "name": "Paper Bag with Handle", "cat": "packing", "sizes": ["6x10x4", "12x16x4"], "lot": "149"}, {"id": "p150", "name": "Stand-Up Pouch", "cat": "packing", "sizes": ["3x5", "4x6", "5x8", "6x9"], "lot": "150"}, {"id": "p151", "name": "Lock (Ziplock) Bag", "cat": "packing", "sizes": ["1.5x2", "2x3", "3x4", "4x5", "5x6", "5x7", "6x9", "8x10", "10x14"], "lot": "151"}, {"id": "p152", "name": "Silver Container", "cat": "packing", "sizes": ["250 ml", "450 ml", "600 ml", "750 ml"], "lot": "152"}, {"id": "p153", "name": "Round Black Container", "cat": "packing", "sizes": ["100 ml", "250 ml", "300 ml", "500 ml", "1000 ml"], "lot": "153"}, {"id": "p154", "name": "Rectangle Black Container", "cat": "packing", "sizes": ["500 ml", "650 ml", "750 ml", "1000 ml"], "lot": "154"}, {"id": "p155", "name": "Milky Round Container", "cat": "packing", "sizes": ["250 ml", "300 ml", "500 ml"], "lot": "155"}, {"id": "p156", "name": "Transparent Container", "cat": "packing", "sizes": ["25 ml", "50 ml", "100 ml"], "lot": "156"}, {"id": "p157", "name": "Black Bucket", "cat": "packing", "sizes": ["2500 ml", "4500 ml"], "lot": "157"}, {"id": "p158", "name": "Parcel Tray", "cat": "packing", "sizes": ["3 CP", "5 CP", "8 CP"], "lot": "158"}, {"id": "p159", "name": "Hinge Box", "cat": "packing", "sizes": ["250 ml", "375 ml", "500 ml", "600 ml", "750 ml", "1000 ml", "1500 ml", "2000 ml"], "lot": "159"}, {"id": "p160", "name": "Silver Foil Roll", "cat": "packing", "sizes": ["18 mtr Roll", "72 No.", "72 Special Patti", "72 Guaranteed"], "lot": "160"}, {"id": "p161", "name": "Toothpick", "cat": "packing", "sizes": ["10 Pkt Pack"], "lot": "161"}, {"id": "p162", "name": "Cling Wrap", "cat": "packing", "sizes": ["100 mtr", "600 mtr"], "lot": "162"}, {"id": "p163", "name": "Paper Roll", "cat": "packing", "sizes": ["25 mtr Plain", "25 mtr Printed"], "lot": "163"}, {"id": "p164", "name": "Butter Paper (Paper)", "cat": "packing", "sizes": ["6x6", "8x8", "10x10", "12x12"], "lot": "164"}, {"id": "p165", "name": "Butter Paper (Plastic)", "cat": "packing", "sizes": ["6x6", "8x8", "10x10", "12x12"], "lot": "165"}, {"id": "p166", "name": "Nylon Twine (Sutali)", "cat": "packing", "sizes": ["Standard"], "lot": "166"}, {"id": "p167", "name": "Cotton Twine (Dora)", "cat": "packing", "sizes": ["400 gm", "800 gm"], "lot": "167"}, {"id": "p168", "name": "Transparent Tape (30 mtr)", "cat": "packing", "sizes": ["1/2 in", "1 in", "2 in"], "lot": "168"}, {"id": "p169", "name": "Transparent Tape (60 mtr)", "cat": "packing", "sizes": ["1 in", "2 in", "3 in"], "lot": "169"}, {"id": "p170", "name": "Transparent Tape (150 mtr)", "cat": "packing", "sizes": ["Standard"], "lot": "170"}, {"id": "p171", "name": "Brown Tape", "cat": "packing", "sizes": ["2 in / 30 mtr", "2 in / 60 mtr"], "lot": "171"}, {"id": "p172", "name": "Stretch Film", "cat": "packing", "sizes": ["6 in (Baby Core)", "8 in", "12 in", "18 in", "24 in"], "lot": "172"}, {"id": "p173", "name": "Billing Roll", "cat": "packing", "sizes": ["2 in / 13 mtr", "3 in / 30 mtr", "3 in / 50 mtr"], "lot": "173"}, {"id": "p174", "name": "Bubble Wrap Roll", "cat": "packing", "sizes": ["60 mtr"], "lot": "174"}, {"id": "p175", "name": "Printed D-Cut Bag", "cat": "packing", "sizes": ["11x15", "12x18"], "lot": "175"}, {"id": "p176", "name": "Plain D-Cut Bag (H/M)", "cat": "packing", "sizes": ["12x18"], "lot": "176"}, {"id": "p177", "name": "Non-Woven D-Cut Bag", "cat": "packing", "sizes": ["10x14", "12x16", "14x19", "16x21"], "lot": "177"}, {"id": "p178", "name": "Non-Woven W-Cut Bag", "cat": "packing", "sizes": ["11x14", "13x16", "16x20"], "lot": "178"}, {"id": "p179", "name": "HDPE Bag", "cat": "packing", "sizes": ["12x18", "15x20", "19x22 Fold", "27x30 W-Cut"], "lot": "179"}, {"id": "p180", "name": "Courier Bag", "cat": "packing", "sizes": ["8x10", "10x12", "10x14", "12x16", "14x18"], "lot": "180"}, {"id": "p181", "name": "Milky Carry Bag", "cat": "packing", "sizes": ["10x14", "13x16", "16x20", "17x23", "20x26"], "lot": "181"}, {"id": "p182", "name": "Blue Carry Bag", "cat": "packing", "sizes": ["27x30", "30x40"], "lot": "182"}, {"id": "p183", "name": "Natural Carry Bag", "cat": "packing", "sizes": ["27x30 (Hole)"], "lot": "183"}, {"id": "p184", "name": "Colour Carry Bag", "cat": "packing", "sizes": ["10x14", "13x16", "16x20"], "lot": "184"}, {"id": "p185", "name": "Pooja Carry Bag", "cat": "packing", "sizes": ["10x14 Natural", "10x14 Black"], "lot": "185"}, {"id": "p186", "name": "H/M Folding Bag", "cat": "packing", "sizes": ["10x14", "13x16"], "lot": "186"}, {"id": "p187", "name": "Poly Bag", "cat": "packing", "sizes": ["4x6", "5x6", "5x8", "6x9", "7x10", "8x11"], "lot": "187"}, {"id": "p188", "name": "Black Carry Bag", "cat": "packing", "sizes": ["10x14", "13x16", "16x20"], "lot": "188"}, {"id": "p189", "name": "Silver Pouch", "cat": "packing", "sizes": ["3x5", "4x7", "5x7", "6x8", "6x9", "6x11"], "lot": "189"}, {"id": "p190", "name": "Market Bag (Bajarachi Pishavi)", "cat": "packing", "sizes": ["Regular", "Big"], "lot": "190"}, {"id": "p191", "name": "Laddu Cup (Wati)", "cat": "packing", "sizes": ["No. 7", "No. 9"], "lot": "191"}]
+;
+
+document.getElementById('skuTotal').textContent = PRODUCTS.length;
+document.getElementById('skuBadge').textContent = PRODUCTS.length + ' SKUS';
+
+/* ---------- state ---------- */
+let activeCat = 'all';
+let searchTerm = '';
+const quote = []; // {name, size, qty}
+
+const grid = document.getElementById('grid');
+const resultCount = document.getElementById('resultCount');
+
+function render(){
+  const filtered = PRODUCTS.filter(p=>{
+    const catOk = activeCat === 'all' || p.cat === activeCat;
+    const term = searchTerm.trim().toLowerCase();
+    const searchOk = !term || p.name.toLowerCase().includes(term);
+    return catOk && searchOk;
+  });
+
+  resultCount.textContent = filtered.length + ' item' + (filtered.length===1?'':'s');
+
+  if(filtered.length === 0){
+    grid.innerHTML = '<div class="empty-state">No items match — try another search or tab.</div>';
+    return;
+  }
+
+  grid.innerHTML = filtered.map(p=>{
+    const icon = getIcon(p.name, p.cat);
+    const multiSize = p.sizes.length > 1 || p.sizes[0] !== 'Standard';
+    return `
+    <div class="card" data-id="${p.id}">
+      <div class="tag-corner">LOT <b>${p.lot}</b></div>
+      <div class="img-tile">
+        <span class="cat-flag" style="background:${CAT_COLORS[p.cat]}">${CAT_LABELS[p.cat]}</span>
+        ${ICONS[icon]}
+      </div>
+      <div class="card-body">
+        <h3 class="item-name">${p.name}</h3>
+        <div class="item-note">SKU-${p.lot} · ${CAT_LABELS[p.cat]}</div>
+
+        ${multiSize ? `
+        <div class="field-label">Select type / size</div>
+        <select class="size-select" data-role="size">
+          ${p.sizes.map(s=>`<option value="${s}">${s}</option>`).join('')}
+        </select>` : `<input type="hidden" data-role="size" value="Standard">`}
+
+        <div class="field-label">Quantity</div>
+        <div class="qty-row">
+          <div class="stepper">
+            <button type="button" data-role="dec">–</button>
+            <input type="text" data-role="qty" value="1" inputmode="numeric">
+            <button type="button" data-role="inc">+</button>
+          </div>
+          <span class="qty-unit">units / cases</span>
+        </div>
+
+        <button class="add-btn" data-role="add">Add to Quote</button>
+      </div>
+    </div>
+  `}).join('');
+}
+
+/* ---------- tab clicks ---------- */
+document.getElementById('tabs').addEventListener('click', e=>{
+  const btn = e.target.closest('.tab');
+  if(!btn) return;
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  activeCat = btn.dataset.cat;
+  render();
+});
+
+document.getElementById('searchInput').addEventListener('input', e=>{
+  searchTerm = e.target.value;
+  render();
+});
+
+/* ---------- card interactions ---------- */
+grid.addEventListener('click', e=>{
+  const card = e.target.closest('.card');
+  if(!card) return;
+  const id = card.dataset.id;
+  const product = PRODUCTS.find(p=>p.id===id);
+
+  if(e.target.dataset.role === 'inc' || e.target.dataset.role === 'dec'){
+    const qtyInput = card.querySelector('[data-role="qty"]');
+    let val = parseInt(qtyInput.value, 10) || 1;
+    val = e.target.dataset.role === 'inc' ? val + 1 : Math.max(1, val - 1);
+    qtyInput.value = val;
+  }
+
+  if(e.target.dataset.role === 'add'){
+    const sizeEl = card.querySelector('[data-role="size"]');
+    const size = sizeEl ? sizeEl.value : 'Standard';
+    const qty = parseInt(card.querySelector('[data-role="qty"]').value, 10) || 1;
+    quote.push({ name: product.name, size, qty });
+    updateQuoteCount();
+    renderDrawer();
+    e.target.textContent = 'Added ✓';
+    e.target.classList.add('added');
+    setTimeout(()=>{ e.target.textContent = 'Add to Quote'; e.target.classList.remove('added'); }, 1100);
+  }
+});
+
+grid.addEventListener('blur', e=>{
+  if(e.target.dataset && e.target.dataset.role === 'qty'){
+    let v = parseInt(e.target.value, 10);
+    if(!v || v < 1) v = 1;
+    e.target.value = v;
+  }
+}, true);
+
+/* ---------- drawer ---------- */
+const drawer = document.getElementById('drawer');
+const overlay = document.getElementById('overlay');
+const drawerList = document.getElementById('drawerList');
+const quoteCountEl = document.getElementById('quoteCount');
+const lineCountEl = document.getElementById('lineCount');
+
+function updateQuoteCount(){ quoteCountEl.textContent = quote.length; }
+
+function renderDrawer(){
+  lineCountEl.textContent = quote.length;
+  if(quote.length === 0){
+    drawerList.innerHTML = '<div class="drawer-empty">Your quote list is empty. Add items from the catalog.</div>';
+    return;
+  }
+  drawerList.innerHTML = quote.map((item, idx)=>`
+    <div class="drawer-item">
+      <div>
+        <div class="di-name">${item.name}</div>
+        <div class="di-meta">${item.size} · ${item.qty} unit${item.qty>1?'s':''}</div>
+      </div>
+      <button data-idx="${idx}" data-role="remove">Remove</button>
+    </div>
+  `).join('');
+}
+
+drawerList.addEventListener('click', e=>{
+  if(e.target.dataset.role === 'remove'){
+    quote.splice(parseInt(e.target.dataset.idx,10), 1);
+    updateQuoteCount();
+    renderDrawer();
+  }
+});
+
+document.getElementById('openDrawerBtn').addEventListener('click', ()=>{
+  drawer.classList.add('open'); overlay.classList.add('open');
+});
+document.getElementById('closeDrawerBtn').addEventListener('click', closeDrawer);
+overlay.addEventListener('click', closeDrawer);
+function closeDrawer(){ drawer.classList.remove('open'); overlay.classList.remove('open'); }
+
+document.getElementById('clearQuoteBtn').addEventListener('click', ()=>{
+  quote.length = 0;
+  updateQuoteCount();
+  renderDrawer();
+});
+
+document.getElementById('submitQuoteBtn').addEventListener('click', ()=>{
+  if(quote.length === 0){ alert('Add at least one item to your quote list first.'); return; }
+  const lines = quote.map(i=>`- ${i.name} — ${i.size} — ${i.qty} unit${i.qty>1?'s':''}`).join('%0D%0A');
+  const subject = encodeURIComponent('Wholesale Quote Request — Shree Shivkrupa Enterprises.');
+  const body = `Hi Crossdock Supply,%0D%0A%0D%0APlease send a quote for the following:%0D%0A%0D%0A${lines}%0D%0A%0D%0AThanks,%0D%0A`;
+  window.location.href = `mailto:sales@example.com?subject=${subject}&body=${body}`;
+});
+
+/* ---------- init ---------- */
+render();
+renderDrawer();
+</script>
+</body>
+</html>
